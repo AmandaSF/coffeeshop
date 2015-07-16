@@ -42,34 +42,46 @@
         <h4>Total: <span id="revenue"><!-- Revenue Message will show up here --></span></h4>
     </div>
 </div>
-
+<script src="https://code.jquery.com/jquery.js"></script>
 <script>
 
     // Set these 3 variables to their DOM elements
+    var myImage = $('#coffee_image');
+    //var myImage = document.getElementById("coffee_image");
+    var myRevenueMessage = $('#revenue');
+    //var myRevenueMessage = document.getElementById("revenue");
 
-    var myImage = document.getElementById("coffee_image");
-    var myRevenueMessage = document.getElementById("revenue");
+    myImage.attr('src', 'static/coffee_beans.jpg');
+    //myImage.setAttribute("src", "static/coffee_beans.jpg");
 
-    myImage.setAttribute("src", "static/coffee_beans.jpg");
-
-    // use this dictionary in further study step
+    
 
     // function that shows beans
     // call this function inside of makeCoffee
 
     function showBeans() {
-        myImage.setAttribute("src", "static/coffee_beans.jpg");
+        myImage.attr("src", "static/coffee_beans.jpg");
+    }
+
+    function showMachine() {
+        myImage.attr("src", "static/coffee_machine.jpg");
+    }
+
+    function showMug() {
+        myImage.attr("src", "static/coffee_mug.jpg");
+        setTimeout(showBeans, 1500);
     }
 
     function makeCoffee() {
-        myImage.setAttribute("src", "static/coffee_machine.jpg");
-        setTimeout(showBeans, 500);
+        showMachine();
+        setTimeout(showMug, 1000);
     }
 
-    myImage.addEventListener('click', makeCoffee);
+    // myImage.addEventListener('click', makeCoffee);
 
+    $('#coffee_image').on('click', makeCoffee)
     
-
+// use this dictionary in further study step
     var prices = {
         "brew": 2.05,
         "espresso": 3.25,
